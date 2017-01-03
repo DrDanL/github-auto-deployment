@@ -1,0 +1,17 @@
+cd /opt/
+
+#Clone the repo
+sudo git clone https://<token>@github.com/DrDanL/test-api-server.git
+
+#Stop all processes
+sudo forever stopall
+
+#Move back and prepare to rename
+cd
+sudo rm -r /opt/www
+sudo mv /opt/index-api-server /opt/www
+
+#Now head in and start the app
+cd /opt/www
+sudo npm install
+sudo forever -w /opt/www/app.js
